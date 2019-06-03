@@ -1,0 +1,16 @@
+{
+  "name": "mars-rover",
+  "version": "1.0.0",
+  "description": "Mars Rover technical Challenge",
+  "main": "index.js",
+  "repository": "git@github.com:cat2608/mars-rover.git",
+  "author": "cat2608 <cat2608@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "NODE_ENV=dev tape tests/**/*.js | tap-spec"
+  },
+  "devDependencies": {
+    "tap-spec": "^5.0.0",
+    "tape": "^4.10.2"
+  }
+}
