@@ -1,4 +1,4 @@
-const rules = require('../tests/rules');
+const rules = require('./rules');
 
 const isDirectlyToX = orientation => (orientation === 'E' || orientation === 'W');
 
