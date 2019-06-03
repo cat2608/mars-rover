@@ -2,7 +2,7 @@ const rules = require('../tests/rules');
 
 const isDirectlyToX = orientation => (orientation === 'E' || orientation === 'W');
 
-const isToRotateInstruction = step => (step !== 'M');
+const isToRotateInstruction = instruction => (instruction !== 'M');
 
 const moveRover = (x, y, orientation) => {
   if (isDirectlyToX(orientation)) {
@@ -13,23 +13,33 @@ const moveRover = (x, y, orientation) => {
   return [x, y, orientation];
 };
 
-const rotateRover = (step, orientation) => {
-  return rules.cardinalDirectionsPair[orientation][step];
+const rotateRover = (instruction, orientation) => {
+  return rules.cardinalDirectionsPair[orientation][instruction];
 };
 
-const moveOrRotateRover = (initialPosition, steps) => {
+const moveOrRotateRover = (initialPosition, instructions) => {
   let finalPosition = [...initialPosition];
 
-  steps.forEach(step => {
+  instructions.forEach(instruction => {
     let [x, y, orientation] = finalPosition;
-    if (isToRotateInstruction(step)) {
-      finalPosition = [x, y, rotateRover(step, orientation)];
+
+    if (isToRotateInstruction(instruction)) {
+      finalPosition = [parseInt(x), parseInt(y), rotateRover(instruction, orientation)];
     } else {
-      finalPosition = moveRover(x, y, orientation);
+      finalPosition = moveRover(parseInt(x), parseInt(y), orientation);
     }
   });
 
   return finalPosition;
 };
 
-module.exports = { moveOrRotateRover };
+const moveAllRovers = (rovers) => {
+  let roversFinalPosition = [];
+  for (let i = 0; i < rovers.length; i++) {
+    let [initialPosition, instructions] = rovers[i];
+    roversFinalPosition.push(moveOrRotateRover([...initialPosition], [...instructions]));
+  }
+  return roversFinalPosition;
+};
+
+module.exports = { moveOrRotateRover, moveAllRovers };
