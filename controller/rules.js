@@ -14,5 +14,5 @@ const cardinalDirectionsPair = {
 
 module.exports = {
   cardinalDirectionsPair,
-  moveRover
+  moveRover,
 };

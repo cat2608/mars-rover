@@ -1,19 +1,10 @@
-### Output:
-The output for each rover should be its final co-ordinates and heading.
-
-### Test Input:
-55 // plateau dimension
-
-12N // initial position
-LMLMLMLMM // instructions
-
-33E // initial position
-MMRMMRMRRM // instructions
-
-### Expected Output:
-13N
-51E
+### Running test
+1. `yarn install`
+2. `yarn test`
 
 
-### Considerations
-_The problem below requires some kind of input. You are free to implement any mechanism for feeding input into your solution (for example, using hard coded data within a unit test)._
+| Initial Position  | Input        | Final Position |
+|:----------------- |:-------------|:---------------|
+| 12N               | LMLMLMLMM    | 13N            |
+| 33E               | MMRMMRMRRM   | 51E            |
+| 40N               | MMLMMLMMM    | 20S            |
